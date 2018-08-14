@@ -46,4 +46,37 @@ router.post('/', (req, res) => {
     }
   });
 });
+
+router.put('/:id', (req, res) => {
+  if (!ObjectId.isValid(req.params.id))
+    res.status(400).send(`no record with given id : ${req.params.id}`);
+
+    var emp = {
+      name: req.body.name,
+      position: req.body.position,
+      office: req.body.office,
+      salary: req.body.salary
+    };
+    Employee.findByIdAndUpdate(req.params.id, { $set: emp }, { new: true }, (err, docs) => {
+      if (!err) {
+        res.send(docs)
+      } else {
+        console.log("Error in Saving Employee: " + JSON.stringify(err, undefined, 2))
+      }
+    });
+})
+
+router.delete('/:id', (req, res) => {
+  if (!ObjectId.isValid(req.params.id))
+    res.status(400).send(`no record with given id : ${req.params.id}`);
+
+    Employee.findByIdAndDelete(req.params.id, (err, docs) => {
+      if (!err) {
+        res.send(docs)
+      } else {
+        console.log("Error in Saving Employee: " + JSON.stringify(err, undefined, 2))
+      }
+    })
+})
+
 module.exports = router;
