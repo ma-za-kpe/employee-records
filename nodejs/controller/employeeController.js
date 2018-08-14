@@ -21,5 +21,12 @@ router.post('/', (req, res) => {
     office: req.body.office,
     salary: req.body.salary
   });
-})
+  emp.save((err, docs) => {
+    if (!err) {
+      res.send(docs)
+    } else {
+      console.log("Error in Saving Employee: " + JSON.stringify(err, undefined, 2))
+    }
+  });
+});
 module.exports = router;
