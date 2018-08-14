@@ -13,4 +13,13 @@ router.get('/', (req, res) => {
   })
 })
 
+
+router.post('/', (req, res) => {
+  var emp = new Employee({
+    name: req.body.name,
+    position: req.body.position,
+    office: req.body.office,
+    salary: req.body.salary
+  });
+})
 module.exports = router;
