@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-var Employee = mongoose.model('People', {
+var Employee = mongoose.model('Emp', {
   name: {type: String},
   position: {type: String},
   office: {type: String},

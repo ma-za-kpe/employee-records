@@ -5,7 +5,7 @@ var ObjectId = mongoose.Types.ObjectId;
 
 var {Employee} = require('../models/employee')
 
-router.get('/employees', (req, res) => {
+router.get('/', (req, res) => {
   Employee.find((err, docs) =>{
     if (!err) {
       res.send(docs)
@@ -31,7 +31,7 @@ router.get('/:id', (req, res) => {
 
 });
 
-router.post('/', (req, res) => {
+router.post('/add', (req, res) => {
   var emp = new Employee({
     name: req.body.name,
     position: req.body.position,
@@ -47,7 +47,7 @@ router.post('/', (req, res) => {
   });
 });
 
-router.put('/:id', (req, res) => {
+router.put('/:id/edit', (req, res) => {
   if (!ObjectId.isValid(req.params.id))
     res.status(400).send(`no record with given id : ${req.params.id}`);
 
@@ -66,7 +66,7 @@ router.put('/:id', (req, res) => {
     });
 })
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id/delete', (req, res) => {
   if (!ObjectId.isValid(req.params.id))
     res.status(400).send(`no record with given id : ${req.params.id}`);
 

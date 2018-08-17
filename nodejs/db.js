@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
+const assert = require('assert')
 
-mongoose.connect('mongodb://localhost:27017/CRUD', (err) =>{
+mongoose.connect('mongodb://localhost:27017/employee', (err) =>{
   if (!err) {
     console.log("mongodb connection is successfull...")
   } else {
