@@ -5,7 +5,7 @@ var ObjectId = mongoose.Types.ObjectId;
 
 var {Employee} = require('../models/employee')
 
-router.get('/', (req, res) => {
+router.get('/employees', (req, res) => {
   Employee.find((err, docs) =>{
     if (!err) {
       res.send(docs)
